@@ -14,7 +14,7 @@ enum type{
 }
 
 
-class SubscriptionService{
+class SubscriptionService {
 private:
     string name;
     float price;
@@ -23,13 +23,13 @@ private:
 public:
     void print(ostream& out);
     SubscriptionService(string n, float p, type b, std::chrono::year_month_day d);
-    string getName(){return name;}
-    float getPrice(){return price;}
-    type getbillingPeriod(){return billingPeriod;}
-    std::chrono::year_month_day getBillDate(){return billDate;}
+    string getName();
+    float getPrice();
+    type getbillingPeriod();
+    std::chrono::year_month_day getBillDate();
     std::chrono::year_month_day getNextDate();
 
-}
+};
 
 
 int main(){
