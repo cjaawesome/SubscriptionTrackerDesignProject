@@ -3,7 +3,7 @@
 #include <fstream>
 #include <list>
 #include <iomanip> 
-#include <chronos>
+#include <chrono>
 using namespace std;
 
 enum type{
@@ -19,35 +19,37 @@ private:
     string name;
     float price;
     type billingPeriod;
-    date::year_month_day billDate;
+    std::chrono::year_month_day billDate;
 public:
     void print(ostream& out);
-    SubscriptionService(string n, float p, type b, year_month_day d);
+    SubscriptionService(string n, float p, type b, std::chrono::year_month_day d);
     string getName(){return name;}
     float getPrice(){return price;}
     type getbillingPeriod(){return billingPeriod;}
-    year_month_day getBillDate(){return billDate;}
-    year_month_day getNextDate();
+    std::chrono::year_month_day getBillDate(){return billDate;}
+    std::chrono::year_month_day getNextDate();
 
 }
 
 
 int main(){
-    
+
+    std::chrono::year_month_day date = year{2024}/month{1}/day{1};
+    SubscriptionService temp("Disney", 10.00, Daily, )
 
     return 0;
 }
 
 
-SubscriptionService::SubscriptionService(string n, float p, type b, year_month_day d = chrono::system_clock::now()){
+SubscriptionService::SubscriptionService(string n, float p, type b, std::chrono::year_month_day d = chrono::system_clock::now()){
     name = n;
     price = p;
     billingPeriod + b;
     billDate = d;
 }
-year_month_day SubscriptionService::getNextDate(){
-    date::year_month_day now = std::chrono::system_clock::now();
-    date::year_month_day temp = billDate;
+std::chrono::year_month_day SubscriptionService::getNextDate(){
+    std::chrono::year_month_day now = std::chrono::system_clock::now();
+    std::chrono::year_month_day temp = billDate;
     while(temp < now){
         switch(billingPeriod){
             case Daily:
@@ -68,5 +70,5 @@ year_month_day SubscriptionService::getNextDate(){
 
 void print(ostream& out){
     string date = "" + billDate.month() + "/" + billDate.day() + "/" + billDate.year();
-    
+    cout << 
 }
